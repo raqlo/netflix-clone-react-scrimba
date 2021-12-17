@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Input, Break, Button, Text } from './styles/opt-form';
+import {assetsUrlPrefix} from "../../utils";
 
 export default function OptForm({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;
@@ -12,7 +13,7 @@ OptForm.Input = function OptFormInput({ ...restProps }) {
 OptForm.Button = function OptFormButton({ children, ...restProps }) {
     return (
         <Button {...restProps}>
-            {children} <img src="/images/icons/chevron-right.png" alt="Try Now" />
+            {children} <img src={`${assetsUrlPrefix}/images/icons/chevron-right.png`} alt="Try Now" />
         </Button>
     )
 }
