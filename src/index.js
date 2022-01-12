@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
 import { App } from './app';
 import { FirebaseContext } from './context/firebase';
+import { initializeApp } from "firebase/app"
+
 
 const config = {
     apiKey: "AIzaSyC1mqqGsn43PDaf4Ik-nD_emfL0fW6WtwM",
@@ -15,11 +17,11 @@ const config = {
     measurementId: "G-9PP8QYP517"
 }
 
-const firebase = window.firebase.initializeApp(config);
+const firebaseApp = initializeApp(config);
 
 ReactDOM.render(
     <>
-        <FirebaseContext.Provider value={{ firebase: window.firebase }}>
+        <FirebaseContext.Provider value={{ firebase: firebaseApp }}>
             <GlobalStyles />
             <App />
         </FirebaseContext.Provider>
