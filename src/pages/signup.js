@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 import { FooterContainer } from "../containers/footer";
 import { HeaderContainer } from "../containers/header";
 import { Form } from "../components";
 import * as ROUTES from "../constants/routes";
+import {useUserAuth} from "../context/useAuthContext";
 
 export default function Signup() {
   const history = useHistory();
@@ -15,28 +16,26 @@ export default function Signup() {
   const [error, setError] = useState("");
 
   const isInvalid = firstName === "" || password === "" || emailAddress === "";
-
-  const handleSignup = (event) => {
+    const {signUp} = useUserAuth()
+  const handleSignup = async (event) => {
     event.preventDefault();
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, emailAddress, password)
-      .then((userCredential) => {
-        // Signed in
+    setError('')
+    try {
+        const userCredential = await signUp(emailAddress, password);
         const user = userCredential.user;
-          updateProfile(user, {
-                  displayName: firstName,
-                  photoURL: Math.floor(Math.random() * 5) + 1,
-              })
-              .then(() => {
-                  setEmailAddress("");
-                  setPassword("");
-                  setError("");
-                  history.push(ROUTES.BROWSE);
-              });
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+
+        await updateProfile(user, {
+          displayName: firstName,
+          photoURL: Math.floor(Math.random() * 5) + 1,
+        })
+
+      setEmailAddress("");
+      setPassword("");
+      setError("");
+      history.push(ROUTES.BROWSE);
+    } catch (err) {
+        setError(err.message)
+    }
   };
 
   return (
@@ -69,7 +68,7 @@ export default function Signup() {
             </Form.Submit>
 
             <Form.Text>
-              Already a user? <Form.Link to="/signin">Sign up now.</Form.Link>
+              Already a user? <Form.Link to={`${ROUTES.SIGN_IN}`}>Sign up now.</Form.Link>
             </Form.Text>
             <Form.TextSmall>
               This page is protected by Google reCAPTCHA.
