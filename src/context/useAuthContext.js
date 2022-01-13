@@ -21,7 +21,7 @@ export function UserAuthContextProvider ({children}) {
             unsubscribe();
         }
     }, [])
-    return <userAuthContext.Provider value={{user, signUp}}>{children}</userAuthContext.Provider>
+    return <userAuthContext.Provider value={{user, signUp, logIn}}>{children}</userAuthContext.Provider>
 }
 
 export function useUserAuth() {

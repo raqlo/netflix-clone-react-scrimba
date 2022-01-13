@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+    publicPath: '/',
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -59,5 +60,6 @@ module.exports = {
     port: 3006,
     historyApiFallback: true,
     open: true,
+    hot: true
   },
 };

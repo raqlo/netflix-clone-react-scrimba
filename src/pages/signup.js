@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 
+import {useUserAuth} from "../context/useAuthContext";
 import { FooterContainer } from "../containers/footer";
 import { HeaderContainer } from "../containers/header";
 import { Form } from "../components";
 import * as ROUTES from "../constants/routes";
-import {useUserAuth} from "../context/useAuthContext";
 
 export default function Signup() {
+    const {signUp} = useUserAuth()
   const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -16,7 +17,6 @@ export default function Signup() {
   const [error, setError] = useState("");
 
   const isInvalid = firstName === "" || password === "" || emailAddress === "";
-    const {signUp} = useUserAuth()
   const handleSignup = async (event) => {
     event.preventDefault();
     setError('')
