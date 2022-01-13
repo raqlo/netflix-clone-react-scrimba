@@ -5,7 +5,7 @@ import {Browse, Home, Signin, Signup} from './pages';
 
 export function App() {
     return (
-        <Router>
+        <Router basename='/netflix-clone-react-scrimba'>
             <Switch>
                 <Route path={ROUTES.SIGN_IN}>
                     <Signin />
