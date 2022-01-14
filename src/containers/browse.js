@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Header } from '../components';
+import React, { useState, useEffect } from 'react';
+import { Header, Loading } from '../components';
 import * as ROUTES from '../constants/routes';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
@@ -17,8 +17,15 @@ export function BrowseContainer() {
         photoURL: "1"
     };
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000);
+    }, [user])
+
     return profile.displayName ? (
             <>
+                {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Frame>
                         <Header.Group>
@@ -36,6 +43,19 @@ export function BrowseContainer() {
                         </Header.Group>
                         <Header.Group>
                             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                            <Header.Profile>
+                                <Header.Picture src={user.photoURL} />
+                                <Header.Dropdown>
+                                    <Header.Group>
+                                        <Header.Picture src={user.photoURL} />
+                                        <Header.Link>{user.displayName}</Header.Link>
+                                    </Header.Group>
+                                    <Header.Group>
+                                        <Header.Link>
+                                            Sign out</Header.Link>
+                                    </Header.Group>
+                                </Header.Dropdown>
+                            </Header.Profile>
                         </Header.Group>
                     </Header.Frame>
                     <Header.Feature>
