@@ -1,31 +1,21 @@
-# title(){return this.options.title||this.options.name}
+## Yet Another React Cloned Netflix
 
-Quick start:
+This is a cloned application that resembles the popular streaming service Netflix. Built with React, Firebase and styled-components.
 
-```
-$ yarn # npm install
-$ yarn build # npm run build
-````
+## Project Status
 
-## Development
+This project is currently in development.
 
-Run Webpack in watch-mode to continually compile the JavaScript as you work:
+## Planned Functionalities
 
-```
-$ yarn watch # npm run watch
-```
+- Authentication: Done
+- Movie catalog: In progress
+- User Profile: Not started
 
-## Supporting Scrimba
+### Live URL:
 
-Since 2017, we have created over 20 free courses on Scrimba, and we're going to
-continue launching free courses. But to pay our bills, we have to charge once
-in a while. So if you've ever wanted to "give back" to Scrimba, you can do that by buying
-	one of our paid courses
+https://raqlo.github.io/netflix-clone-react-scrimba/ 
 
-- [Become a professional React developer](https://scrimba.com/course/greact)
-- [The Responsive Web Design Bootcamp](https://scrimba.com/course/gresponsive)
-- [The Ultimate JavaScript Bootcamp](https://scrimba.com/course/gjavascript)
+## Reflection
 
-	It would also mean the world to us if you share the courses.  
-
-Happy Coding!
+This was a side project created to experiment with Firebase using a Scrimba tutorial as a guide. Sadly, Scrimba deprecated the tutorial because of the release of the new Firebase version 9, which is not compatible with the previous versions.  So I decided to continue with this project but to adapt it to the new version as the same time I familiarize with the library.
