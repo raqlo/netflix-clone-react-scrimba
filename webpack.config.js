@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
     clean: true,
-    publicPath: '/',
+    publicPath: '/netflix-clone-react-scrimba/',
   },
   resolve: {
     extensions: [".js", ".jsx"],
