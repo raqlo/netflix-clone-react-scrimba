@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
-import {assetsUrlPrefix} from "../../../utils";
+import {assetsUrlPrefix} from "../../../constants/utils";
 
 export const Background = styled.section`
   display: flex;
@@ -219,4 +219,5 @@ export const Profile = styled.div`
         flex-direction: column;
     }
 `;
+
 

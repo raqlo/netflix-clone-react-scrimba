@@ -1,8 +1,7 @@
 import React from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes';
-import {assetsUrlPrefix} from "../utils";
-
+import {assetsUrlPrefix} from "../constants/utils";
 export function HeaderContainer({ children }) {
     return (
         <Header>

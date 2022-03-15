@@ -1,6 +1,6 @@
 import React from 'react';
 import { LockBody, ReleaseBody, Spinner, Picture } from './styles/loading';
-import {assetsUrlPrefix} from "../../utils";
+import {assetsUrlPrefix} from "../../constants/utils";
 
 export default function Loading({ src, ...restProps }) {
     return (

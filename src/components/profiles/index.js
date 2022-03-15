@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Title, List, Item, Picture, Name } from './styles/profiles';
-import {assetsUrlPrefix} from "../../utils";
+import {assetsUrlPrefix} from "../../constants/utils";
 
 export default function Profiles({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>;

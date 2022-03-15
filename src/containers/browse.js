@@ -3,14 +3,26 @@ import { Header, Loading } from '../components';
 import * as ROUTES from '../constants/routes';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
-import {assetsUrlPrefix} from "../utils";
+import {assetsUrlPrefix} from "../constants/utils";import {useUserAuth} from "../context/useAuthContext";
+import {useHistory} from "react-router-dom";
 
 export function BrowseContainer() {
     const [category, setCategory] = useState('series');
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const history = useHistory();
+    const { logOut } = useUserAuth();
 
+    const handleLogOut = async () => {
+        try {
+            console.log('logged out')
+            await logOut();
+            history.push(ROUTES.HOME);
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
 
     const user = {
         displayName: "Karl",
@@ -51,7 +63,7 @@ export function BrowseContainer() {
                                         <Header.Link>{user.displayName}</Header.Link>
                                     </Header.Group>
                                     <Header.Group>
-                                        <Header.Link>
+                                        <Header.Link onClick={() => handleLogOut()}>
                                             Sign out</Header.Link>
                                     </Header.Group>
                                 </Header.Dropdown>

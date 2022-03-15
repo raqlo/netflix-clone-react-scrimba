@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import {assetsUrlPrefix} from "../../../utils";
+import {assetsUrlPrefix} from "../../../constants/utils";
 
 export const LockBody = createGlobalStyle`
     body {

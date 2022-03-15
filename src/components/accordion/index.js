@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
 import { Body, Title, Header, Container, Inner, Item, Frame } from './styles/accordion';
-import {assetsUrlPrefix} from "../../utils";
+import {assetsUrlPrefix} from "../../constants/utils";
 
 const ToggleContext = createContext();
 
