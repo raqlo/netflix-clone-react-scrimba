@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 
-import {useUserAuth} from "../context/useAuthContext";
+import { useUserAuth } from "../context/useAuthContext";
 import { FooterContainer } from "../containers/footer";
 import { HeaderContainer } from "../containers/header";
 import { Form } from "../components";
 import * as ROUTES from "../constants/routes";
 
 export default function Signup() {
-    const {signUp} = useUserAuth()
+  const { signUp } = useUserAuth();
   const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -19,22 +19,22 @@ export default function Signup() {
   const isInvalid = firstName === "" || password === "" || emailAddress === "";
   const handleSignup = async (event) => {
     event.preventDefault();
-    setError('')
+    setError("");
     try {
-        const userCredential = await signUp(emailAddress, password);
-        const user = userCredential.user;
+      const userCredential = await signUp(emailAddress, password);
+      const user = userCredential.user;
 
-        await updateProfile(user, {
-          displayName: firstName,
-          photoURL: Math.floor(Math.random() * 5) + 1,
-        })
+      await updateProfile(user, {
+        displayName: firstName,
+        photoURL: Math.floor(Math.random() * 5) + 1,
+      });
 
       setEmailAddress("");
       setPassword("");
       setError("");
       history.push(ROUTES.BROWSE);
     } catch (err) {
-        setError(err.message)
+      setError(err.message);
     }
   };
 
@@ -68,7 +68,8 @@ export default function Signup() {
             </Form.Submit>
 
             <Form.Text>
-              Already a user? <Form.Link to={`${ROUTES.SIGN_IN}`}>Sign up now.</Form.Link>
+              Already a user?{" "}
+              <Form.Link to={`${ROUTES.SIGN_IN}`}>Sign up now.</Form.Link>
             </Form.Text>
             <Form.TextSmall>
               This page is protected by Google reCAPTCHA.

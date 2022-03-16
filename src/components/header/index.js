@@ -18,6 +18,7 @@ import {
     Dropdown,
     Profile
 } from "./styles/header";
+import {assetsUrlPrefix} from "../../constants/utils";
 
 export default function Header({ bg = true, children, ...restProps }) {
   return bg ? <Background {...restProps}>{children}</Background> : children;
@@ -41,7 +42,7 @@ Header.Search = function HeaderSearch({
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive(!searchActive)}>
-        <img src="/images/icons/search.png" alt="Search" />
+        <img src={`${assetsUrlPrefix}/images/icons/search.png`} alt="Search" />
       </SearchIcon>
       <SearchInput
         value={searchTerm}
