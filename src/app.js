@@ -1,24 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import {Browse, Home, Signin, Signup} from './pages';
+import {useAuthListener} from "./hooks";
+import { RedirectIfLoggedIn, ProtectedRoute } from './helpers/routes';
+
 
 export function App() {
+    const { user } = useAuthListener();
+
     return (
         <Router basename='/netflix-clone-react-scrimba'>
             <Switch>
-                <Route path={ROUTES.SIGN_IN}>
+                <RedirectIfLoggedIn user={user} loggedInPath={ROUTES.BROWSE} path={ROUTES.SIGN_IN}>
                     <Signin />
-                </Route>
-                <Route path={ROUTES.SIGN_UP}>
+                </RedirectIfLoggedIn>
+                <RedirectIfLoggedIn user={user} loggedInPath={ROUTES.BROWSE} path={ROUTES.SIGN_UP}>
                     <Signup />
-                </Route>
-                <Route path={ROUTES.BROWSE}>
+                </RedirectIfLoggedIn>
+                <ProtectedRoute user={user} path={ROUTES.BROWSE}>
                     <Browse />
-                </Route>
-                <Route path={ROUTES.HOME}>
+                </ProtectedRoute>
+                <RedirectIfLoggedIn user={user} loggedInPath={ROUTES.BROWSE} path={ROUTES.HOME} >
                     <Home />
-                </Route>
+                </RedirectIfLoggedIn>
             </Switch>
         </Router>
     );
